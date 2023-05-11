@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('./utils/database')
 const ToDos = require('./models/todos.models')
+const cors = require('cors');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8300;
@@ -14,6 +15,8 @@ db.sync()
 .catch( (err) => console.log(error))
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
